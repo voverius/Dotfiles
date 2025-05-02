@@ -23,14 +23,9 @@ _darcs
 ^/COPYING
 
 # -------------------------------------------
-\scripts
+/.git
+.gitignore
+
 /scripts
-scripts
-scripts/
-/scripts/
-
-systemctl
-\systemctl
 /systemctl
-
 
