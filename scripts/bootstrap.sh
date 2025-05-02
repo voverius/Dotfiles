@@ -40,21 +40,18 @@ if [ "$SHELL" != "$(which zsh)" ]; then
   fi
 fi
 
-echo "Zsh and Oh-My-Zsh installed."
-
 # Create main user
 if ! id "nemo" &>/dev/null; then
   sudo useradd -m -s /bin/bash -G sudo nemo
   echo "Created admin user 'nemo'"
 fi
 
-# Finish
-sudo -i -u nemo
-echo "Bootstrap script completed successfully."
-
 # Cleanup
 sudo nala autoremove -y
 sudo nala clean
+
+# Finish
+echo "Bootstrap script completed successfully."
 
 # Restart 
 read -p "Would you like to reboot now? [y/N]: " reboot_confirm
