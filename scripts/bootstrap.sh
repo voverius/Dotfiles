@@ -5,8 +5,15 @@ set -e
 # Install Zsh if missing
 if ! command -v zsh >/dev/null 2>&1; then
   echo "Installing Zsh..."
-  sudo apt update && sudo apt upgrade -y
   sudo apt update && sudo apt install -y zsh
+fi
+
+# Install nala
+if ! command -v nala >/dev/null 2>&1; then
+  echo "Installing Nala..."
+  echo "deb [trusted=yes] http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar.list
+  wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar.asc
+  sudo apt update
   sudo apt install -y nala
 fi
 
@@ -44,6 +51,10 @@ fi
 # Finish
 sudo -i -u nemo
 echo "Bootstrap script completed successfully."
+
+# Cleanup
+sudo nala autoremove -y
+sudo nala clean
 
 # Restart 
 read -p "Would you like to reboot now? [y/N]: " reboot_confirm
