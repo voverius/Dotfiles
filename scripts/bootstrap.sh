@@ -6,6 +6,17 @@ set -e
 if ! command -v zsh >/dev/null 2>&1; then
   echo "Installing Zsh..."
   sudo apt update && sudo apt install -y zsh
+  
+  if [ ! -d "$HOME/.oh-my-zsh" ]; then
+	  echo "Installing Oh My Zsh..."
+	  export RUNZSH=no
+	  export CHSH=no
+	  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	  
+	  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+	  git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+	  git clone https://github.com/changyuheng/zsh-interactive-cd ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-interactive-cd
+	fi
 fi
 
 # Install nala
@@ -15,18 +26,6 @@ if ! command -v nala >/dev/null 2>&1; then
   wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar.asc
   sudo apt update
   sudo apt install -y nala
-fi
-
-# Install Oh My Zsh if missing
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-  echo "Installing Oh My Zsh..."
-  export RUNZSH=no
-  export CHSH=no
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  git clone https://github.com/changyuheng/zsh-interactive-cd ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-interactive-cd
 fi
 
 # Prompt to change default shell
