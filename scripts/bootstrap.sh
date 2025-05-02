@@ -40,12 +40,6 @@ if [ "$SHELL" != "$(which zsh)" ]; then
   fi
 fi
 
-# Create main user
-if ! id "nemo" &>/dev/null; then
-  sudo useradd -m -s /bin/bash -G sudo nemo
-  echo "Created admin user 'nemo'"
-fi
-
 # Cleanup
 sudo nala autoremove -y
 sudo nala clean
