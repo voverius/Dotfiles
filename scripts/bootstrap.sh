@@ -53,9 +53,3 @@ sudo nala clean
 # Finish
 echo "Bootstrap script completed successfully."
 
-# Restart 
-read -p "Would you like to reboot now? [y/N]: " reboot_confirm
-if [[ "$reboot_confirm" =~ ^[Yy]$ ]]; then
-  sudo reboot
-fi
-
