@@ -1,0 +1,14 @@
+[Unit]
+Description=Delayed iSCSI Login
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/bash -c 'until ping -c1 192.168.0.10 >/dev/null 2>&1; do sleep 2; done'
+ExecStart=/usr/bin/iscsiadm -m node -T $IQN -p 192.168.0.10:3260 --login
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,12 @@
+[Unit]
+Description=Auto-connect Bluetooth speaker
+After=bluetooth.service
+Requires=bluetooth.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/bt-autoconnect.sh
+
+[Install]
+WantedBy=default.target
+
