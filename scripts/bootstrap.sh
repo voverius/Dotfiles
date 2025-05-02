@@ -5,7 +5,7 @@ set -e
 # Install Zsh if missing
 if ! command -v zsh >/dev/null 2>&1; then
   echo "Installing Zsh..."
-  sudo apt update && sudo apt install -y zsh nala
+  sudo apt update && sudo apt install -y zsh nala stow
 fi
 
 # Install Oh My Zsh if missing
