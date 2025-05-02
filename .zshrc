@@ -1,5 +1,5 @@
 # --- PATH ---
-export PATH="$HOME/.pyenv/bin:$HOME/.scripts:$HOME/.local/bin:$PATH"
+export PATH="$HOME/.scripts:$HOME/.local/bin:$PATH"
 
 # --- Oh My Zsh ---
 export ZSH="$HOME/.oh-my-zsh"
@@ -15,14 +15,9 @@ plugins=(
 source "$ZSH/oh-my-zsh.sh"
 
 # --- Scripts ---
-alias system-cleanup='bash ~/.scripts/system-cleanup.sh'
-alias update-system='bash ~/.scripts/update-system.sh'
+alias cleanup='bash ~/Dotfiles/scripts/system-cleanup.sh'
+alias update='bash ~/Dotfiles/scripts/system-update.sh'
 alias shake='sudo systemctl restart logid'
-
-# --- Aliases ---
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
 
 # --- History ---
 HISTFILE="$HOME/.zsh_history"
@@ -34,6 +29,27 @@ setopt appendhistory sharehistory histignorespace
 setopt autocd nocaseglob correct extendedglob prompt_subst
 
 # --- Python ---
-eval "$(pyenv init --path)"
-eval "$(pyenv virtualenv-init -)"
+export PATH="$HOME/.pyenv/bin:$PATH"
+if command -v pyenv >/dev/null; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+# --- Aliases ---
+alias ls='ls --color=auto'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# Navigate faster
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# Git shortcuts
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git log --oneline --graph --decorate'
 
