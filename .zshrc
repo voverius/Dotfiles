@@ -3,7 +3,8 @@ export PATH="$HOME/.scripts:$HOME/.local/bin:$PATH"
 
 # --- Oh My Zsh ---
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="fishy"
 plugins=(
   git
   sudo
@@ -48,8 +49,8 @@ alias ....="cd ../../.."
 
 # Git shortcuts
 alias gs='git status'
-alias ga='git add'
-alias gc='git commit'
+alias ga='git add .'
+alias gc='git commit -m'
 alias gp='git push'
 alias gl='git log --oneline --graph --decorate'
 
