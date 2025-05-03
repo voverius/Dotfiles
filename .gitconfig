@@ -1,0 +1,15 @@
+[user]
+	name = voverius
+	email = voverius@tuta.io
+	
+[credential]
+	helper = cache --timeout=3600
+	
+[core]
+	editor = nano
+
+[color]
+  ui = auto
+  
+[init]
+  defaultBranch = master
