@@ -1,0 +1,111 @@
+version: "3.8"
+services:
+  homarr:
+    image: ghcr.io/homarr-labs/homarr:latest
+    container_name: homarr
+    environment:
+      - PUID=1028
+      - PGID=100
+      - TZ=Europe/Madrid
+      - SECRET_ENCRYPTION_KEY=04d9545d4159c1b65585f545e93d555ddcde33a864cce18d8550822c9cb7bac9
+    volumes:
+      - /srv/docker/homarr:/appdata
+    ports:
+      - "7575:7575"
+    restart: unless-stopped
+
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flareslverr
+    environment:
+      - LOG_LEVEL=info
+      - MAX_CONCURRENCY=5
+    volumes:
+      - /srv/docker/flaresolverr:/config
+    ports:
+      - "8191:8191"
+    restart: unless-stopped
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1028
+      - PGID=100
+      - TZ=Europe/Madrid
+    volumes:
+      - /srv/docker/prowlarr:/config
+    ports:
+      - "9696:9696"
+    restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1028
+      - PGID=100
+      - TZ=Europe/Madrid
+    volumes:
+      - /srv/docker/radarr:/config
+      - /mnt/media:/media
+    ports:
+      - "7878:7878"
+    restart: unless-stopped
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1028
+      - PGID=100
+      - TZ=Europe/Madrid
+    volumes:
+      - /srv/docker/sonarr:/config
+      - /mnt/media:/media
+    ports:
+      - "8989:8989"
+    restart: unless-stopped
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=1028
+      - PGID=100
+      - TZ=Europe/Madrid
+    volumes:
+      - /srv/docker/bazarr/config:/config
+      - /mnt/media:/media
+    ports:
+      - "6767:6767"
+    restart: unless-stopped
+
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1028
+      - PGID=100
+      - TZ=Europe/Madrid
+    volumes:
+      - /srv/docker/jellyfin/config:/config
+      - /srv/docker/jellyfin/cache:/cache
+      - /mnt/media:/media
+    ports:
+      - "8096:8096"
+    restart: unless-stopped
+
+  jellyseerr:
+     image: fallenbagel/jellyseerr:latest
+     container_name: jellyseerr
+     environment:
+          - LOG_LEVEL=debug
+          - PUID=1028
+          - PGID=100
+          - TZ=Europe/Madrid
+     volumes:
+          - /srv/docker/jellyseerr:/app/config
+     ports:
+          - "5055:5055"
+     restart: unless-stopped
