@@ -54,3 +54,5 @@ alias gc='git commit -m'
 alias gp='git push'
 alias gl='git log --oneline --graph --decorate'
 
+# Project
+alias venv='source .venv/bin/activate'

@@ -1,6 +1,7 @@
 [user]
 	name = voverius
 	email = voverius@tuta.io
+	signingKey = /home/nemo/.ssh/id_ed25519.pub
 	
 [credential]
 	helper = cache --timeout=3600
@@ -13,3 +14,5 @@
   
 [init]
   defaultBranch = master
+[gpg]
+	format = ssh
