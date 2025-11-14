@@ -18,7 +18,9 @@ source "$ZSH/oh-my-zsh.sh"
 # --- Scripts ---
 alias cleanup='bash ~/Dotfiles/scripts/system-cleanup.sh'
 alias update='bash ~/Dotfiles/scripts/system-update.sh'
-alias shake='sudo systemctl restart logid'
+alias shake='sudo systemctl restart logid; systemctl --user restart onedrive'
+
+alias docker-attach='docker attach --sig-proxy=false'
 
 # --- History ---
 HISTFILE="$HOME/.zsh_history"
@@ -56,3 +58,8 @@ alias gl='git log --oneline --graph --decorate'
 
 # Project
 alias venv='source .venv/bin/activate'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="$HOME/.local/bin:$PATH"

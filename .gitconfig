@@ -16,3 +16,9 @@
   defaultBranch = master
 [gpg]
 	format = ssh
+[safe]
+	directory = /home/nemo/Sabbath/Monitor
+	directory = /home/nemo/Sabbath/Monitor
+	directory = /home/nemo/Sabbath/Monitor
+	directory = /home/nemo/Sabbath/Monitor
+	directory = /home/nemo/Sabbath/Monitor
