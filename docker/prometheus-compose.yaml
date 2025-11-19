@@ -23,16 +23,14 @@ services:
     image: prom/node-exporter:latest
     container_name: node_exporter
     pid: host
+    network_mode: host
     command:
-      - '--path.rootfs=/host'
-    volumes:
-      - '/:/host:ro'
+      - '--collector.filesystem.ignored-mount-points=^/(dev|proc|sys|var/lib/docker)($|/)'
     healthcheck:
       test: ["CMD", "wget", "-q", "-O", "-", "http://localhost:9100/metrics"]
-      interval: 30s
+      interval: 10s
       timeout: 5s
-      retries: 3
-    network_mode: host
+      retries: 5
     restart: unless-stopped
 
 
