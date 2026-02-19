@@ -17,7 +17,7 @@ services:
 
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:latest
-    container_name: flareslverr
+    container_name: flaresolverr
     environment:
       - LOG_LEVEL=info
       - MAX_CONCURRENCY=5
@@ -94,6 +94,8 @@ services:
       - PUID=1028
       - PGID=100
       - TZ=Europe/Madrid
+    devices:
+      - /dev/dri:/dev/dri
     volumes:
       - /srv/docker/jellyfin/config:/config
       - /srv/docker/jellyfin/cache:/cache
