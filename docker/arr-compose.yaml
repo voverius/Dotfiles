@@ -96,6 +96,9 @@ services:
       - TZ=Europe/Madrid
     devices:
       - /dev/dri:/dev/dri
+    group_add:
+      - "992"
+      - "44"
     volumes:
       - /srv/docker/jellyfin/config:/config
       - /srv/docker/jellyfin/cache:/cache
