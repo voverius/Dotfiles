@@ -1,0 +1,27 @@
+services:
+  homarr:
+    image: ghcr.io/homarr-labs/homarr:latest
+    container_name: homarr
+    environment:
+      - PUID=1028
+      - PGID=100
+      - TZ=Europe/Madrid
+      - SECRET_ENCRYPTION_KEY=04d9545d4159c1b65585f545e93d555ddcde33a864cce18d8550822c9cb7bac9
+    ports:
+      - "7575:7575"
+    volumes:
+      - /srv/docker/homarr:/appdata
+    restart: unless-stopped
+
+
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    environment:
+      - LOG_LEVEL=info
+      - MAX_CONCURRENCY=5
+    ports:
+      - "8191:8191"
+    volumes:
+      - /srv/docker/flaresolverr:/config
+    restart: unless-stopped

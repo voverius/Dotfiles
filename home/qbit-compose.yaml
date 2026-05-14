@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:4.5.3
@@ -7,9 +6,9 @@ services:
       - PUID=1028
       - PGID=100
       - UMASK=002
-      - TZ=Europe/Madrid
       - WEBUI_PORT=9865
       - TORRENTING_PORT=6881
+      - TZ=Europe/Madrid
     ports:
       - "9865:9865"
       - "6881:6881"
